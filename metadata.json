@@ -1,0 +1,5 @@
+{
+  "name": "DocuFlow Automation",
+  "description": "A robust React application for automating ISP document generation (Individual, Batch, and OS) with print-ready A4 output.",
+  "requestFramePermissions": []
+}
