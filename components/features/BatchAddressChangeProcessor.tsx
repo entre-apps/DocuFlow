@@ -7,11 +7,12 @@ import { parseAddressChangeText } from '../../utils/parser';
 import { Plus, Trash2, Printer, User, MapPin, ClipboardPaste, ArrowRightLeft } from 'lucide-react';
 
 interface Props {
+  queue: AddressChangeData[];
+  setQueue: React.Dispatch<React.SetStateAction<AddressChangeData[]>>;
   onGenerateBatch: (queue: AddressChangeData[]) => void;
 }
 
-export const BatchAddressChangeProcessor: React.FC<Props> = ({ onGenerateBatch }) => {
-  const [queue, setQueue] = useState<AddressChangeData[]>([]);
+export const BatchAddressChangeProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBatch }) => {
   const [inputText, setInputText] = useState("");
   
   const [formData, setFormData] = useState<Omit<AddressChangeData, 'enderecoAntigo' | 'enderecoNovo'>>({
