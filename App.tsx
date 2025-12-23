@@ -14,7 +14,7 @@ import { TermoLocacaoPJ } from './components/documents/TermoLocacaoPJ';
 import { MudancaEnderecoDoc } from './components/documents/MudancaEnderecoDoc';
 import { Button } from './components/ui/Button';
 import { Toast } from './components/ui/Toast';
-import { ClientData, PJData, AddressChangeData } from './types';
+import { ClientData, PJData, AddressChangeData, OSData } from './types';
 import { FileText, Layers, Wrench, ZoomIn, ZoomOut, Printer, Building2, ListPlus, MapPin, CopyPlus } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -24,6 +24,13 @@ const App: React.FC = () => {
   const [addressChangePrintData, setAddressChangePrintData] = useState<AddressChangeData[] | null>(null);
   const [previewScale, setPreviewScale] = useState(0.75);
   
+  // Persistent Queue States
+  const [pfQueue, setPfQueue] = useState<ClientData[]>([]);
+  const [pjQueue, setPjQueue] = useState<PJData[]>([]);
+  const [addressQueue, setAddressQueue] = useState<AddressChangeData[]>([]);
+  const [osQueue, setOsQueue] = useState<OSData[]>([]);
+  const [osOutput, setOsOutput] = useState("");
+
   // State to handle form resets and notifications
   const [formVersion, setFormVersion] = useState(0);
   const [showToast, setShowToast] = useState(false);
@@ -88,9 +95,12 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <header className="mb-8 border-b border-[#5A189A] pb-6">
             <h1 className="text-3xl font-bold text-black">DocuFlow Automation</h1>
-            <p className="text-black opacity-80 mt-1">
-              {activeTab.includes('pj') ? 'Módulo: Pessoa Jurídica (PJ)' : activeTab.includes('address') ? 'Módulo: Mudança de Endereço' : 'Módulo: Pessoa Física (PF)'}
-            </p>
+            <div className="flex justify-between items-center mt-1">
+              <p className="text-black opacity-80">
+                {activeTab.includes('pj') ? 'Módulo: Pessoa Jurídica (PJ)' : activeTab.includes('address') ? 'Módulo: Mudança de Endereço' : 'Módulo: Pessoa Física (PF)'}
+              </p>
+              {/* Global queue indicators could be added here if desired */}
+            </div>
           </header>
 
           {/* Tabs */}
@@ -105,7 +115,7 @@ const App: React.FC = () => {
                 onClick={() => setActiveTab('batch')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${activeTab === 'batch' ? 'bg-[#5A189A] text-white shadow' : 'text-black hover:bg-[#E0C3FC]'}`}
              >
-               <Layers className={`w-4 h-4 ${activeTab === 'batch' ? 'text-[#FF9000]' : 'text-black'}`} /> Lote PF
+               <Layers className={`w-4 h-4 ${activeTab === 'batch' ? 'text-[#FF9000]' : 'text-black'}`} /> Lote PF {pfQueue.length > 0 && <span className="bg-orange-500 text-white text-[10px] rounded-full px-1.5">{pfQueue.length}</span>}
              </button>
              <div className="w-px bg-[#9D4EDD] mx-1 h-6 self-center opacity-50"></div>
              <button 
@@ -118,7 +128,7 @@ const App: React.FC = () => {
                 onClick={() => setActiveTab('batch-pj')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${activeTab === 'batch-pj' ? 'bg-[#5A189A] text-white shadow' : 'text-black hover:bg-[#E0C3FC]'}`}
              >
-               <ListPlus className={`w-4 h-4 ${activeTab === 'batch-pj' ? 'text-[#FF9000]' : 'text-black'}`} /> Lote PJ
+               <ListPlus className={`w-4 h-4 ${activeTab === 'batch-pj' ? 'text-[#FF9000]' : 'text-black'}`} /> Lote PJ {pjQueue.length > 0 && <span className="bg-orange-500 text-white text-[10px] rounded-full px-1.5">{pjQueue.length}</span>}
              </button>
              <div className="w-px bg-[#9D4EDD] mx-1 h-6 self-center opacity-50"></div>
              <button 
@@ -131,25 +141,50 @@ const App: React.FC = () => {
                 onClick={() => setActiveTab('batch-address-change')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${activeTab === 'batch-address-change' ? 'bg-[#5A189A] text-white shadow' : 'text-black hover:bg-[#E0C3FC]'}`}
              >
-               <CopyPlus className={`w-4 h-4 ${activeTab === 'batch-address-change' ? 'text-[#FF9000]' : 'text-black'}`} /> Lote Mudança
+               <CopyPlus className={`w-4 h-4 ${activeTab === 'batch-address-change' ? 'text-[#FF9000]' : 'text-black'}`} /> Lote Mudança {addressQueue.length > 0 && <span className="bg-orange-500 text-white text-[10px] rounded-full px-1.5">{addressQueue.length}</span>}
              </button>
              <button 
                 onClick={() => setActiveTab('os')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${activeTab === 'os' ? 'bg-[#5A189A] text-white shadow' : 'text-black hover:bg-[#E0C3FC]'}`}
              >
-               <Wrench className={`w-4 h-4 ${activeTab === 'os' ? 'text-[#FF9000]' : 'text-black'}`} /> Gerador O.S.
+               <Wrench className={`w-4 h-4 ${activeTab === 'os' ? 'text-[#FF9000]' : 'text-black'}`} /> Gerador O.S. {osQueue.length > 0 && <span className="bg-orange-500 text-white text-[10px] rounded-full px-1.5">{osQueue.length}</span>}
              </button>
           </div>
 
-          {/* Content Area - Using key={formVersion} to force component reset after generation */}
-          <main key={formVersion}>
-            {activeTab === 'individual' && <IndividualForm onGenerate={handleGenerate} />}
-            {activeTab === 'batch' && <BatchProcessor onGenerateBatch={handleGenerate} />}
-            {activeTab === 'pj' && <PJForm onGenerate={handleGeneratePJ} />}
-            {activeTab === 'batch-pj' && <BatchPJProcessor onGenerateBatch={handleGeneratePJ} />}
-            {activeTab === 'address-change' && <AddressChangeForm onGenerate={handleGenerateAddressChange} />}
-            {activeTab === 'batch-address-change' && <BatchAddressChangeProcessor onGenerateBatch={handleGenerateAddressChange} />}
-            {activeTab === 'os' && <OSGenerator />}
+          {/* Content Area */}
+          <main>
+            {activeTab === 'individual' && <IndividualForm key={formVersion} onGenerate={handleGenerate} />}
+            {activeTab === 'batch' && (
+              <BatchProcessor 
+                queue={pfQueue} 
+                setQueue={setPfQueue} 
+                onGenerateBatch={handleGenerate} 
+              />
+            )}
+            {activeTab === 'pj' && <PJForm key={formVersion} onGenerate={handleGeneratePJ} />}
+            {activeTab === 'batch-pj' && (
+              <BatchPJProcessor 
+                queue={pjQueue} 
+                setQueue={setPjQueue} 
+                onGenerateBatch={handleGeneratePJ} 
+              />
+            )}
+            {activeTab === 'address-change' && <AddressChangeForm key={formVersion} onGenerate={handleGenerateAddressChange} />}
+            {activeTab === 'batch-address-change' && (
+              <BatchAddressChangeProcessor 
+                queue={addressQueue} 
+                setQueue={setAddressQueue} 
+                onGenerateBatch={handleGenerateAddressChange} 
+              />
+            )}
+            {activeTab === 'os' && (
+              <OSGenerator 
+                queue={osQueue} 
+                setQueue={setOsQueue} 
+                output={osOutput} 
+                setOutput={setOsOutput} 
+              />
+            )}
           </main>
         </div>
 
