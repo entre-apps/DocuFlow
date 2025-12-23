@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
@@ -8,12 +9,12 @@ import { parseCRMText } from '../../utils/parser';
 import { Plus, Trash2, Printer, User, FileText, Wifi, Tv, PlayCircle, Check, Search } from 'lucide-react';
 
 interface Props {
+  queue: ClientData[];
+  setQueue: React.Dispatch<React.SetStateAction<ClientData[]>>;
   onGenerateBatch: (queue: ClientData[]) => void;
 }
 
-export const BatchProcessor: React.FC<Props> = ({ onGenerateBatch }) => {
-  const [queue, setQueue] = useState<ClientData[]>([]);
-  
+export const BatchProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBatch }) => {
   // Temporary state for input
   const [batchInput, setBatchInput] = useState("");
   const [contrato, setContrato] = useState("");
@@ -191,7 +192,6 @@ export const BatchProcessor: React.FC<Props> = ({ onGenerateBatch }) => {
              <div className="grid grid-cols-1 gap-3">
                {queue.map((item, idx) => (
                  <div key={idx} className="bg-white border border-l-4 border-[#9D4EDD] rounded shadow-sm p-3 hover:shadow-md transition-all relative group">
-                    {/* Header do Card */}
                     <div className="flex justify-between items-start mb-2">
                        <div className="flex items-start gap-2">
                           <div className="bg-[#F3E6FF] p-1.5 rounded text-black">
@@ -211,7 +211,6 @@ export const BatchProcessor: React.FC<Props> = ({ onGenerateBatch }) => {
                        </button>
                     </div>
 
-                    {/* Detalhes do Card */}
                     <div className="grid grid-cols-2 gap-2 mt-3 bg-gray-50 p-2 rounded border border-gray-100">
                        <div className="flex flex-col">
                           <span className="text-[10px] text-gray-500 font-semibold flex items-center gap-1">
