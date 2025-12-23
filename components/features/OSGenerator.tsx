@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
@@ -6,10 +7,14 @@ import { OSData } from '../../types';
 import { parseCRMText } from '../../utils/parser';
 import { Copy, Plus, Trash2 } from 'lucide-react';
 
-export const OSGenerator: React.FC = () => {
-  const [queue, setQueue] = useState<OSData[]>([]);
-  const [output, setOutput] = useState("");
-  
+interface Props {
+  queue: OSData[];
+  setQueue: React.Dispatch<React.SetStateAction<OSData[]>>;
+  output: string;
+  setOutput: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const OSGenerator: React.FC<Props> = ({ queue, setQueue, output, setOutput }) => {
   const [contrato, setContrato] = useState("");
   const [login, setLogin] = useState("");
   const [oco, setOco] = useState("");
