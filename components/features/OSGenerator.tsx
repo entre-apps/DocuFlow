@@ -83,7 +83,7 @@ HORÁRIO: ${data.periodo}`).join('\n\n========================================\n
                 <Input label="OCO" value={oco} onChange={e => setOco(e.target.value)} className="col-span-2" />
                 <Select 
                     label="Período" 
-                    options={[{value: "Manhã", label: "Manhã"}, {value: "Tarde", label: "Tarde"}, {value: "Comercial", label: "Comercial"}]}
+                    options={[{value: "Manhã", label: "Manhã"}, {value: "Tarde", label: "Tarde"}, {value: "Comercial", label: "Comercial"}, {value: "Noite", label: "Noite"}]}
                     value={periodo}
                     onChange={e => setPeriodo(e.target.value)}
                     className="col-span-2"
