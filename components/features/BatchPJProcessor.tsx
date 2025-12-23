@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
 import { PJData } from '../../types';
@@ -5,11 +6,12 @@ import { parsePJCRMText } from '../../utils/parser';
 import { Plus, Trash2, Printer, Building2, ClipboardPaste } from 'lucide-react';
 
 interface Props {
+  queue: PJData[];
+  setQueue: React.Dispatch<React.SetStateAction<PJData[]>>;
   onGenerateBatch: (queue: PJData[]) => void;
 }
 
-export const BatchPJProcessor: React.FC<Props> = ({ onGenerateBatch }) => {
-  const [queue, setQueue] = useState<PJData[]>([]);
+export const BatchPJProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBatch }) => {
   const [crmText, setCrmText] = useState("");
   
   const handleAddQueue = () => {
