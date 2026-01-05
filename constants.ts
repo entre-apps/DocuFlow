@@ -16,12 +16,12 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
   "ER-ENTRE 600": {
       id: "ER-ENTRE 600",
       name: "ER-ENTRE 600",
-      total: 112.90,
+      total: 118.90,
       services: [
-          { un: 1, desc: "PORTA ÓPTICA 600Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 42.00 },
-          { un: 1, desc: "Acesso à Internet 600Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 40.90 },
+          { un: 1, desc: "PORTA ÓPTICA 600Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 38.00 },
+          { un: 1, desc: "Acesso à Internet 600Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 34.90 },
           { un: 1, desc: "TERMINAL ÓPTICO (ONU)", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
-          { un: 1, desc: "COMODATO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 20.00 }
+          { un: 1, desc: "COMODATO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 36.00 }
       ]
   },
   "ER-ENTRE 800": {
