@@ -27,13 +27,13 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
   "ER-ENTRE 800": {
       id: "ER-ENTRE 800",
       name: "ER-ENTRE 800",
-      total: 114.90,
-      promoPrice: 89.90,
+      total: 119.90,
+      promoPrice: 94.90,
       promoText: "Valor promocional (3 meses)",
       services: [
           { un: 1, desc: "PORTA ÓPTICA 800Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 40.00 },
           { un: 1, desc: "Acesso à Internet 800Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 39.90 },
-          { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 35.00 }
+          { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 40.00 }
       ]
   },
   "ER-ENTRE 920": {
