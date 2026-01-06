@@ -73,7 +73,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "SKY",
     "details": "Acesso básico aos canais SKY com a melhor programação para sua família.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-sky-light-globo",
@@ -81,8 +81,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "SKY",
     "details": "Pacote SKY Light incluindo a programação completa da Globo para não perder nada.",
-    "price": 30,
-    "comboPrice": 25
+    "price": 25,
+    "comboPrice": 15 
   },
   {
     "id": "app-sky-light-amazon",
@@ -91,7 +91,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "SKY",
     "details": "SKY Light turbinado com Amazon Prime para o melhor do streaming e entregas grátis.",
     "price": 35,
-    "comboPrice": 30
+    "comboPrice": 25
   },
   {
     "id": "app-sky-full",
@@ -109,7 +109,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Música",
     "details": "Streaming de música e podcasts com playlists, rádios e recomendações personalizadas.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-looke",
@@ -118,7 +118,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Streaming brasileiro com filmes, séries e área infantil (Looke Kids).",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-kiddle-1",
@@ -127,7 +127,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Infantil",
     "details": "Plataforma de experiências educacionais ao vivo e em vídeo para crianças até 12 anos.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-nutri",
@@ -136,7 +136,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Saúde e Bem estar",
     "details": "Aplicativo de acompanhamento nutricional e bem‑estar (curadoria e planos alimentares).",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-kaspersky-1",
@@ -145,7 +145,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Segurança Digital",
     "details": "Antivírus e proteção essencial com navegação segura e recursos básicos.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-exitlag",
@@ -154,7 +154,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Games",
     "details": "Otimizador de rotas para jogos online que reduz lag, perda de pacotes e jitter.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-playkids",
@@ -163,7 +163,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Infantil",
     "details": "Plataforma infantil segura com desenhos, jogos educativos e livros digitais.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-hubvantagens",
@@ -172,7 +172,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Descontos",
     "details": "Clube de benefícios com cupons, descontos em marcas parceiras e cashback.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-ubook",
@@ -181,7 +181,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "App de audiolivros, e‑books, podcasts e revistas em um só catálogo.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-estuda",
@@ -190,7 +190,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "App educacional com apostilas em áudio e materiais para reforço e vestibulares.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-pequenosleitores",
@@ -199,7 +199,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Infantil",
     "details": "Biblioteca infantil com ebooks e audiobooks selecionados por faixa etária.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-fluid",
@@ -208,7 +208,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Saúde e Bem estar",
     "details": "App de bem‑estar com yoga, meditação guiada, respiração e sons relaxantes.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-socialcomics",
@@ -217,7 +217,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "Streaming de HQs e quadrinhos digitais com catálogo atualizado diariamente.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-revistaria",
@@ -226,7 +226,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "Banca digital com acesso a revistas brasileiras em formato digital/PDF.",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-playlist",
@@ -235,7 +235,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Música",
     "details": "A plataforma oferece mais de 100 playlists de diversos gêneros e estilos musicais, todas elaboradas por profissionais do mercado. Os usuários também podem ouvir a rádio streaming, com músicas, notícias e entrevistas 24 horas por dia",
     "price": 20,
-    "comboPrice": 15
+    "comboPrice": 10
   },
   {
     "id": "app-kiddle-2",
@@ -243,8 +243,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Infantil",
     "details": "Plataforma de atividades educacionais e de lazer para crianças, ao vivo e em vídeo.",
-    "price": 30,
-    "comboPrice": 25
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-kaspersky-3",
@@ -252,8 +252,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Segurança Digital",
     "details": "Antivírus e proteção essencial com navegação segura e recursos básicos.",
-    "price": 30,
-    "comboPrice": 25
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-curtaon",
@@ -261,8 +261,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Séries e Filmes",
     "details": "Streaming do Canal Curta! com documentários e séries sobre artes e humanidades.",
-    "price": 30,
-    "comboPrice": 25
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-ojornalista",
@@ -270,8 +270,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Educação e Leitura",
     "details": "App para ler e ouvir jornais, revistas e podcasts de notícias brasileiros.",
-    "price": 30,
-    "comboPrice": 25
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-disney-ads",
@@ -279,8 +279,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Top",
     "category": "Séries e Filmes",
     "details": "Streaming da Disney com anúncios; catálogo Disney, Pixar, Marvel, Star Wars e NatGeo.",
-    "price": 35,
-    "comboPrice": 30
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-hbo-ads",
@@ -289,7 +289,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Plano com anúncios do Max (HBO), com filmes, séries e esportes selecionados.",
     "price": 35,
-    "comboPrice": 30
+    "comboPrice": 25
   },
   {
     "id": "app-cindie",
@@ -298,7 +298,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Cindie: streaming de cinema e séries independentes, curadoria internacional.",
     "price": 35,
-    "comboPrice": 30
+    "comboPrice": 25
   },
   {
     "id": "app-leitura360",
@@ -307,7 +307,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "Plataforma de leitura multimídia com audiolivros e revistas",
     "price": 35,
-    "comboPrice": 30
+    "comboPrice": 25
   },
   {
     "id": "app-disney-noads",
@@ -316,7 +316,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Streaming da Disney sem anúncios em planos elegíveis; filmes e séries Disney, Pixar, Marvel, Star Wars e NatGeo.",
     "price": 40,
-    "comboPrice": 35
+    "comboPrice": 30
   },
   {
     "id": "app-hbo-noads",
@@ -325,7 +325,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Streaming Max (HBO) com filmes, séries e esportes; opções sem anúncios.",
     "price": 40,
-    "comboPrice": 35
+    "comboPrice": 30
   },
   {
     "id": "app-kaspersky-plus",
@@ -334,7 +334,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Segurança Digital",
     "details": "Segurança avançada com antivírus e extras como VPN e monitoramento adicional.",
     "price": 40,
-    "comboPrice": 35
+    "comboPrice": 30
   },
   {
     "id": "app-nba",
@@ -343,7 +343,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Esportes",
     "details": "Serviço oficial para assistir jogos da NBA ao vivo e on‑demand.",
     "price": 40,
-    "comboPrice": 35
+    "comboPrice": 30
   },
   {
     "id": "app-smartcontent",
@@ -352,7 +352,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "App de aprendizado rápido com resumos, vídeos e áudios curados sobre inovação e negócios.",
     "price": 40,
-    "comboPrice": 35
+    "comboPrice": 30
   },
   {
     "id": "app-queimadiaria",
@@ -361,7 +361,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Saúde e Bem estar",
     "details": "App de treinos em casa focado em queima de gordura abdominal e condicionamento.",
     "price": 40,
-    "comboPrice": 35
+    "comboPrice": 30
   },
   {
     "id": "app-zen",
@@ -370,6 +370,6 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Saúde e Bem estar",
     "details": "App de meditação e sono com conteúdos para ansiedade, sono e bem‑estar.",
     "price": 40,
-    "comboPrice": 35
+    "comboPrice": 30
   }
 ];
