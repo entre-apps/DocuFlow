@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface PrintHeaderProps {
@@ -10,9 +11,17 @@ export const PrintHeader: React.FC<PrintHeaderProps> = ({ contrato, title }) => 
     <>
       <div className="text-center mb-2">
         <img 
-          src="https://placehold.co/240x80/ffffff/333333?text=LOGO+EMPRESA" 
-          alt="Logo" 
-          className="h-16 mx-auto object-contain"
+          src="logo.png" 
+          alt="Logo Empresa" 
+          className="h-16 w-auto mx-auto object-contain block"
+          style={{ minWidth: '120px' }}
+          onError={(e) => {
+            // Fallback caso a imagem não exista ou falhe o carregamento
+            const target = e.target as HTMLImageElement;
+            if (!target.src.includes('placehold.co')) {
+              target.src = "https://placehold.co/240x80/ffffff/333333?text=LOGO+FALTANDO";
+            }
+          }}
         />
       </div>
       <div className="text-center font-bold text-sm mb-2">
