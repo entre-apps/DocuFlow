@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { AddressChangeData } from '../../types';
 import { formatDate } from '../../utils/parser';
@@ -17,9 +18,16 @@ export const MudancaEnderecoDoc: React.FC<Props> = ({ data }) => {
            <tr>
              <th className="border border-black p-2 w-1/4">
                <img 
-                 src="https://placehold.co/150x60/ffffff/333333?text=LOGO" 
+                 src="logo.png" 
                  alt="Logo" 
-                 className="h-10 mx-auto object-contain"
+                 className="h-10 w-auto mx-auto object-contain block"
+                 style={{ minWidth: '80px' }}
+                 onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (!target.src.includes('placehold.co')) {
+                      target.src = "https://placehold.co/150x60/ffffff/333333?text=LOGO";
+                    }
+                 }}
                />
              </th>
              <th className="border border-black p-2 w-2/4 text-center">
