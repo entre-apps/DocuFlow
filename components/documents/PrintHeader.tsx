@@ -11,7 +11,7 @@ export const PrintHeader: React.FC<PrintHeaderProps> = ({ contrato, title }) => 
     <>
       <div className="text-center mb-2">
         <img 
-          src="logo.png" 
+          src="/image/logo.png" 
           alt="Logo Empresa" 
           className="h-16 w-auto mx-auto object-contain block"
           style={{ minWidth: '120px' }}
