@@ -18,7 +18,7 @@ export const MudancaEnderecoDoc: React.FC<Props> = ({ data }) => {
            <tr>
              <th className="border border-black p-2 w-1/4">
                <img 
-                 src="logo.png" 
+                 src="/image/logo.png" 
                  alt="Logo" 
                  className="h-10 w-auto mx-auto object-contain block"
                  style={{ minWidth: '80px' }}
