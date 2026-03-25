@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
+import { Select } from '../ui/Select';
 import { PJData } from '../../types';
+import { PJ_PLAN_DETAILS } from '../../constants';
 import { Printer, Building2, MapPin, CreditCard } from 'lucide-react';
 
 interface Props {
@@ -40,6 +42,20 @@ export const PJForm: React.FC<Props> = ({ onGenerate }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handlePlanPresetChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const planId = e.target.value;
+    if (!planId) return;
+
+    const plan = PJ_PLAN_DETAILS[planId];
+    if (plan) {
+      setFormData(prev => ({
+        ...prev,
+        planoEscolha: plan.name,
+        valorMensal: plan.total.toFixed(2).replace('.', ',')
+      }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -82,6 +98,23 @@ export const PJForm: React.FC<Props> = ({ onGenerate }) => {
         <div className="bg-[#F3E6FF] rounded-lg shadow-md border border-[#9D4EDD]">
           <CardHeader title="Financeiro e Contrato" icon={CreditCard} />
           <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Seletor de Planos Padrão */}
+            <div className="md:col-span-3 mb-2">
+               <Select 
+                 label="Carregar Plano Padrão (Opcional)" 
+                 id="planPreset"
+                 options={[
+                   { value: "", label: "Selecione para preencher automaticamente..." },
+                   ...Object.values(PJ_PLAN_DETAILS).map(p => ({ 
+                     value: p.id, 
+                     label: `${p.name} - R$ ${p.total.toFixed(2).replace('.', ',')}` 
+                   }))
+                 ]}
+                 onChange={handlePlanPresetChange}
+               />
+               <p className="text-[10px] text-gray-500 mt-1 pl-1">Selecionar um plano acima preencherá o "Plano Escolhido" e o "Valor Mensal" abaixo. Você ainda pode editar manualmente se necessário.</p>
+            </div>
+
             <Input id="planoEscolha" label="Plano Escolhido" value={formData.planoEscolha} onChange={handleChange} className="md:col-span-2" />
             <Input id="valorMensal" label="Valor Mensal (R$)" value={formData.valorMensal} onChange={handleChange} required />
             <Input id="valorInstalacao" label="Valor Instalação" value={formData.valorInstalacao} onChange={handleChange} />

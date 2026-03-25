@@ -1,6 +1,6 @@
 import React from 'react';
 import { ClientData } from '../../types';
-import { PLAN_DETAILS, TV_PLANS, TV_ADDONS, PLAYHUB_APPS } from '../../constants';
+import { PLAN_DETAILS, TV_PLANS, TV_ADDONS, PLAYHUB_APPS, EQUIPMENTS } from '../../constants';
 import { formatDate } from '../../utils/parser';
 import { PrintHeader } from './PrintHeader';
 
@@ -100,6 +100,24 @@ export const TermoAdesao: React.FC<Props> = ({ data }) => {
     });
   }
 
+  // Process Equipments
+  if (data.equipamentos && data.equipamentos.length > 0) {
+    data.equipamentos.forEach(equipId => {
+      const equip = EQUIPMENTS[equipId];
+      if (equip) {
+        totalMensal += equip.price;
+        rows.push(
+          <tr key={`equip-${equip.id}`} className="text-black">
+            <td className="border border-gray-400 p-1 text-center">1</td>
+            <td className="border border-gray-400 p-1">{equip.name}</td>
+            <td className="border border-gray-400 p-1">{equip.provider}</td>
+            <td className="border border-gray-400 p-1 text-right">{equip.price.toFixed(2).replace('.', ',')}</td>
+          </tr>
+        );
+      }
+    });
+  }
+
   const Field = ({ label, value, className = "" }: { label: string, value: string, className?: string }) => (
     <div className={`flex justify-between border-b border-gray-300 py-0.5 ${className}`}>
       <span className="font-bold min-w-[80px]">{label}</span>
@@ -126,6 +144,13 @@ export const TermoAdesao: React.FC<Props> = ({ data }) => {
        data.adicionais.forEach(k => {
           const a = TV_ADDONS[k];
           if(a) promoTotal += a.price;
+       });
+    }
+    // + Equipments
+    if (data.equipamentos && data.equipamentos.length > 0) {
+       data.equipamentos.forEach(equipId => {
+          const equip = EQUIPMENTS[equipId];
+          if (equip) promoTotal += equip.price;
        });
     }
   }

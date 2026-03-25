@@ -4,9 +4,9 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
 import { ClientData, PlayhubApp } from '../../types';
-import { PLAN_DETAILS, TV_PLANS, PLAYHUB_APPS } from '../../constants';
+import { PLAN_DETAILS, TV_PLANS, PLAYHUB_APPS, EQUIPMENTS } from '../../constants';
 import { parseCRMText } from '../../utils/parser';
-import { Plus, Trash2, Printer, User, FileText, Wifi, Tv, PlayCircle, Check, Search } from 'lucide-react';
+import { Plus, Trash2, Printer, User, FileText, Wifi, Tv, PlayCircle, Check, Search, Monitor } from 'lucide-react';
 
 interface Props {
   queue: ClientData[];
@@ -21,6 +21,7 @@ export const BatchProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBat
   const [dataInstalacao, setDataInstalacao] = useState("");
   const [planoTV, setPlanoTV] = useState("Nenhum");
   const [selectedApps, setSelectedApps] = useState<string[]>([]);
+  const [selectedEquipamentos, setSelectedEquipamentos] = useState<string[]>([]);
   const [appSearch, setAppSearch] = useState("");
 
   // Helper for categorization with filter
@@ -38,6 +39,12 @@ export const BatchProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBat
   const toggleApp = (appId: string) => {
     setSelectedApps(prev => 
       prev.includes(appId) ? prev.filter(id => id !== appId) : [...prev, appId]
+    );
+  };
+
+  const toggleEquipamento = (equipId: string) => {
+    setSelectedEquipamentos(prev => 
+      prev.includes(equipId) ? prev.filter(id => id !== equipId) : [...prev, equipId]
     );
   };
 
@@ -66,6 +73,7 @@ export const BatchProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBat
       planoTV,
       adicionais: [],
       apps: [...selectedApps],
+      equipamentos: [...selectedEquipamentos],
       isBatch: true
     };
 
@@ -76,6 +84,7 @@ export const BatchProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBat
     setBatchInput("");
     setPlanoTV("Nenhum");
     setSelectedApps([]);
+    setSelectedEquipamentos([]);
     setAppSearch("");
   };
 
@@ -162,6 +171,28 @@ export const BatchProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBat
                </div>
                <p className="text-xs text-gray-500 mt-1">Selecione os apps que serão incluídos para este cliente.</p>
              </div>
+
+             <div className="pt-2 border-t border-gray-200">
+               <label className="block text-sm font-medium text-black mb-2">Equipamentos Adicionais (Locação)</label>
+               <div className="grid grid-cols-1 gap-2">
+                 {Object.values(EQUIPMENTS).map(equip => {
+                   const isSelected = selectedEquipamentos.includes(equip.id);
+                   return (
+                     <div 
+                       key={equip.id}
+                       onClick={() => toggleEquipamento(equip.id)}
+                       className={`cursor-pointer flex items-center justify-between p-2 rounded text-xs transition-colors border ${isSelected ? 'bg-[#5A189A] border-[#5A189A] text-white' : 'bg-white border-gray-200 hover:border-[#9D4EDD] text-gray-700'}`}
+                     >
+                        <div className="flex items-center gap-2">
+                          <Monitor className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : 'text-gray-400'}`} />
+                          <span>{equip.name} <span className="opacity-75 text-[10px] ml-1">(R$ {equip.price.toFixed(2).replace('.',',')})</span></span>
+                        </div>
+                        {isSelected && <Check className="w-3 h-3" />}
+                     </div>
+                   );
+                 })}
+               </div>
+             </div>
            </div>
         </div>
 
@@ -224,7 +255,7 @@ export const BatchProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBat
                           </span>
                           <span className="text-xs font-bold text-black truncate" title={item.planoInternet}>{item.planoInternet}</span>
                        </div>
-                       {(item.planoTV !== 'Nenhum' || item.apps.length > 0) && (
+                       {(item.planoTV !== 'Nenhum' || item.apps.length > 0 || (item.equipamentos && item.equipamentos.length > 0)) && (
                          <div className="flex flex-col col-span-2 border-t border-gray-200 pt-2 mt-1 gap-1">
                             {item.planoTV !== 'Nenhum' && (
                               <div className="flex items-center gap-2">
@@ -236,6 +267,12 @@ export const BatchProcessor: React.FC<Props> = ({ queue, setQueue, onGenerateBat
                               <div className="flex items-center gap-2">
                                 <PlayCircle className="w-3 h-3 text-gray-500" />
                                 <span className="text-xs font-medium text-gray-700">{item.apps.length} Apps selecionados</span>
+                              </div>
+                            )}
+                            {item.equipamentos && item.equipamentos.length > 0 && (
+                              <div className="flex items-center gap-2">
+                                <Monitor className="w-3 h-3 text-gray-500" />
+                                <span className="text-xs font-medium text-gray-700">{item.equipamentos.length} Equipamentos</span>
                               </div>
                             )}
                          </div>

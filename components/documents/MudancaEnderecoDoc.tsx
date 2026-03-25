@@ -2,6 +2,7 @@
 import React from 'react';
 import { AddressChangeData } from '../../types';
 import { formatDate } from '../../utils/parser';
+import logo from '../../assets/logo.png';
 
 interface Props {
   data: AddressChangeData;
@@ -17,18 +18,21 @@ export const MudancaEnderecoDoc: React.FC<Props> = ({ data }) => {
         <thead>
            <tr>
              <th className="border border-black p-2 w-1/4">
-               <img 
-                 src="/image/logo.png" 
-                 alt="Logo" 
-                 className="h-10 w-auto mx-auto object-contain block"
-                 style={{ minWidth: '80px' }}
-                 onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (!target.src.includes('placehold.co')) {
-                      target.src = "https://placehold.co/150x60/ffffff/333333?text=LOGO";
-                    }
-                 }}
-               />
+               <div className="flex justify-center items-center" style={{ minHeight: '40px' }}>
+                 <img 
+                   src={logo} 
+                   alt="Logo" 
+                   className="h-10 w-auto object-contain block"
+                   style={{ minWidth: '80px' }}
+                   onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      if (!target.src.includes('placehold.co')) {
+                        target.src = "https://placehold.co/150x60/ffffff/333333?text=LOGO";
+                      }
+                   }}
+                 />
+               </div>
              </th>
              <th className="border border-black p-2 w-2/4 text-center">
                <div className="text-sm font-bold uppercase underline mb-1">Sistema de Gestão de Qualidade</div>

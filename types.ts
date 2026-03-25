@@ -38,6 +38,13 @@ export interface PlayhubApp {
   comboPrice: number;
 }
 
+export interface Equipment {
+  id: string;
+  name: string;
+  price: number;
+  provider: string;
+}
+
 export interface ClientData {
   // Personal
   contrato: string;
@@ -61,6 +68,7 @@ export interface ClientData {
   planoTV: string; // Key from TV_PLANS
   adicionais: string[]; // Array of keys from TV_ADDONS (legacy/removed from UI but kept for type safety)
   apps: string[]; // Array of Playhub App IDs
+  equipamentos: string[]; // Array of Equipment IDs
   
   // Financial / Install
   valorInstalacao: string;

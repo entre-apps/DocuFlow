@@ -1,5 +1,6 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import logo from '../../assets/logo.png';
 
 interface PrintHeaderProps {
   contrato: string;
@@ -7,22 +8,24 @@ interface PrintHeaderProps {
 }
 
 export const PrintHeader: React.FC<PrintHeaderProps> = ({ contrato, title }) => {
+  const [hasError, setHasError] = useState(false);
+
   return (
     <>
-      <div className="text-center mb-2">
-        <img 
-          src="/image/logo.png" 
-          alt="Logo Empresa" 
-          className="h-16 w-auto mx-auto object-contain block"
-          style={{ minWidth: '120px' }}
-          onError={(e) => {
-            // Fallback caso a imagem não exista ou falhe o carregamento
-            const target = e.target as HTMLImageElement;
-            if (!target.src.includes('placehold.co')) {
-              target.src = "https://placehold.co/240x80/ffffff/333333?text=LOGO+FALTANDO";
-            }
-          }}
-        />
+      <div className="text-center mb-2 flex justify-center items-center" style={{ minHeight: '64px' }}>
+        {hasError ? (
+          <div className="font-bold text-xl uppercase tracking-widest px-4 py-2 border-2 border-black rounded">
+            ENTRE - Internet Premium
+          </div>
+        ) : (
+          <img 
+            src={logo} 
+            alt="Logo Empresa" 
+            className="h-16 w-auto object-contain block"
+            style={{ minWidth: '120px' }}
+            onError={() => setHasError(true)}
+          />
+        )}
       </div>
       <div className="text-center font-bold text-sm mb-2">
         CONTRATO: {contrato}

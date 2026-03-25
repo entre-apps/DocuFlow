@@ -9,7 +9,7 @@ interface Props {
 
 export const TermoLocacao: React.FC<Props> = ({ data }) => {
   const Field = ({ label, value, className = "" }: { label: string, value: string, className?: string }) => (
-    <div className={`flex justify-between border-b border-gray-300 py-0.5 ${className}`}>
+    <div className={`flex justify-between border-b border-gray-300 py-0.5 text-[10px] ${className}`}>
       <span className="font-bold min-w-[80px]">{label}</span>
       <span className="flex-grow text-left pl-2 break-all">{value}</span>
     </div>
@@ -25,15 +25,21 @@ export const TermoLocacao: React.FC<Props> = ({ data }) => {
       </p>
 
       <div className="font-bold text-sm mt-1 mb-1 bg-gray-100 p-1 text-black">LOCATÁRIO</div>
-      <Field label="NOME:" value={data.nome} />
-      <Field label="CPF:" value={data.cpf} />
-      <Field label="RESIDENTE À:" value={data.endereco} />
-      {!data.isBatch && (
-        <>
-           <Field label="BAIRRO:" value={data.bairro} />
-           <Field label="CIDADE:" value={data.cidade} />
-        </>
+      <div className="flex gap-4">
+        <Field label="NOME:" value={data.nome} className="w-2/3" />
+        <Field label="CPF:" value={data.cpf} className="w-1/3" />
+      </div>
+      
+      {!data.isBatch ? (
+        <div className="flex gap-4">
+          <Field label="RESIDENTE À:" value={data.endereco} className="w-1/2" />
+          <Field label="BAIRRO:" value={data.bairro} className="w-1/4" />
+          <Field label="CIDADE:" value={data.cidade} className="w-1/4" />
+        </div>
+      ) : (
+        <Field label="RESIDENTE À:" value={data.endereco} />
       )}
+      
       <p className="text-[10px] mt-1 mb-1">
         À seguir denominado(a) simplesmente de <strong>LOCATÁRIO</strong>, resolvem celebrar o presente Contrato de Aluguel:
       </p>

@@ -1,5 +1,5 @@
 
-import { InternetPlan, TVPlan, TVAddon, PlayhubApp } from './types';
+import { InternetPlan, TVPlan, TVAddon, PlayhubApp, Equipment } from './types';
 
 export const PLAN_DETAILS: Record<string, InternetPlan> = {
   "ER-ENTRE 500": {
@@ -16,24 +16,24 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
   "ER-ENTRE 600": {
       id: "ER-ENTRE 600",
       name: "ER-ENTRE 600",
-      total: 118.90,
+      total: 112.90,
       services: [
-          { un: 1, desc: "PORTA ÓPTICA 600Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 38.00 },
-          { un: 1, desc: "Acesso à Internet 600Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 34.90 },
+          { un: 1, desc: "PORTA ÓPTICA 600Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 42.00 },
+          { un: 1, desc: "Acesso à Internet 600Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 40.90 },
           { un: 1, desc: "TERMINAL ÓPTICO (ONU)", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
-          { un: 1, desc: "COMODATO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 36.00 }
+          { un: 1, desc: "COMODATO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 20.00 }
       ]
   },
   "ER-ENTRE 800": {
       id: "ER-ENTRE 800",
       name: "ER-ENTRE 800",
-      total: 119.90,
-      promoPrice: 94.90,
+      total: 114.90,
+      promoPrice: 89.90,
       promoText: "Valor promocional (3 meses)",
       services: [
           { un: 1, desc: "PORTA ÓPTICA 800Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 40.00 },
           { un: 1, desc: "Acesso à Internet 800Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 39.90 },
-          { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 40.00 }
+          { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 35.00 }
       ]
   },
   "ER-ENTRE 920": {
@@ -45,6 +45,59 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
           { un: 1, desc: "Acesso à Internet 920Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 60.00 },
           { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 35.00 },
           { un: 1, desc: "COMODATO PONTO ADICIONAL OMNI WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 0.00 }
+      ]
+  }
+};
+
+export const PJ_PLAN_DETAILS: Record<string, InternetPlan> = {
+  "PJ 800 N": {
+      id: "PJ 800 N",
+      name: "ER-ENTRE-PJ-800-N",
+      total: 139.90,
+      services: [
+          { un: 1, desc: "LINK DEDICADO 800Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 50.00 },
+          { un: 1, desc: "ACESSO À INTERNET 800Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 44.90 },
+          { un: 1, desc: "LOCAÇÃO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 35.00 },
+          { un: 1, desc: "LOCAÇÃO ONU", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 }
+      ]
+  },
+  "PJ 800 PRO": {
+      id: "PJ 800 PRO",
+      name: "ER-ENTRE-PJ-800 + GERÊNCIA PROATIVA",
+      total: 219.90,
+      services: [
+          { un: 1, desc: "LINK DEDICADO 800Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 50.00 },
+          { un: 1, desc: "ACESSO À INTERNET 800Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 44.90 },
+          { un: 1, desc: "LOCAÇÃO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 35.00 },
+          { un: 1, desc: "LOCAÇÃO ONU", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
+          { un: 1, desc: "GERÊNCIA PROATIVA", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 80.00 }
+      ]
+  },
+  "PJ 800 PRO IP": {
+      id: "PJ 800 PRO IP",
+      name: "ER-ENTRE-PJ-800 + GERÊNCIA + IP FIXO",
+      total: 269.90,
+      services: [
+          { un: 1, desc: "LINK DEDICADO 800Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 50.00 },
+          { un: 1, desc: "ACESSO À INTERNET 800Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 44.90 },
+          { un: 1, desc: "LOCAÇÃO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 35.00 },
+          { un: 1, desc: "LOCAÇÃO ONU", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
+          { un: 1, desc: "GERÊNCIA PROATIVA", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 80.00 },
+          { un: 1, desc: "IP FIXO DEDICADO", emp: "I-CONECTA REDES DE TELECOM.", val: 50.00 }
+      ]
+  },
+  "PJ 920 PRO IP": {
+      id: "PJ 920 PRO IP",
+      name: "ER-ENTRE-PJ-920 + GERÊNCIA + IP FIXO",
+      total: 319.90,
+      services: [
+          { un: 1, desc: "LINK DEDICADO 920Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 50.00 },
+          { un: 1, desc: "ACESSO À INTERNET 920Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 49.90 },
+          { un: 1, desc: "LOCAÇÃO ROTEADOR WIFI PREMIUM", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 70.00 },
+          { un: 1, desc: "LOCAÇÃO ONU", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
+          { un: 1, desc: "MANUTENÇÃO WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
+          { un: 1, desc: "GERÊNCIA PROATIVA", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 80.00 },
+          { un: 1, desc: "IP FIXO DEDICADO", emp: "I-CONECTA REDES DE TELECOM.", val: 50.00 }
       ]
   }
 };
@@ -65,6 +118,11 @@ export const TV_ADDONS: Record<string, TVAddon> = {
   "Awdio": { id: "Awdio", name: "AWDIO", price: 5.00 }
 };
 
+export const EQUIPMENTS: Record<string, Equipment> = {
+  "mini-nobreak": { id: "mini-nobreak", name: "LOCAÇÃO MINI NO-BREAK", price: 18.00, provider: "I-NEXT LOCAÇÕES E SERVIÇOS" },
+  "firestick": { id: "firestick", name: "LOCAÇÃO FIRESTICK", price: 34.00, provider: "I-NEXT LOCAÇÕES E SERVIÇOS" }
+};
+
 export const PLAYHUB_APPS: PlayhubApp[] = [
   {
     "id": "app-sky-light",
@@ -73,7 +131,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "SKY",
     "details": "Acesso básico aos canais SKY com a melhor programação para sua família.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-sky-light-globo",
@@ -81,8 +139,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "SKY",
     "details": "Pacote SKY Light incluindo a programação completa da Globo para não perder nada.",
-    "price": 25,
-    "comboPrice": 15 
+    "price": 30,
+    "comboPrice": 25
   },
   {
     "id": "app-sky-light-amazon",
@@ -91,7 +149,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "SKY",
     "details": "SKY Light turbinado com Amazon Prime para o melhor do streaming e entregas grátis.",
     "price": 35,
-    "comboPrice": 25
+    "comboPrice": 30
   },
   {
     "id": "app-sky-full",
@@ -109,7 +167,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Música",
     "details": "Streaming de música e podcasts com playlists, rádios e recomendações personalizadas.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-looke",
@@ -118,7 +176,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Streaming brasileiro com filmes, séries e área infantil (Looke Kids).",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-kiddle-1",
@@ -127,7 +185,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Infantil",
     "details": "Plataforma de experiências educacionais ao vivo e em vídeo para crianças até 12 anos.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-nutri",
@@ -136,7 +194,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Saúde e Bem estar",
     "details": "Aplicativo de acompanhamento nutricional e bem‑estar (curadoria e planos alimentares).",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-kaspersky-1",
@@ -145,7 +203,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Segurança Digital",
     "details": "Antivírus e proteção essencial com navegação segura e recursos básicos.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-exitlag",
@@ -154,7 +212,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Games",
     "details": "Otimizador de rotas para jogos online que reduz lag, perda de pacotes e jitter.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-playkids",
@@ -163,7 +221,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Infantil",
     "details": "Plataforma infantil segura com desenhos, jogos educativos e livros digitais.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-hubvantagens",
@@ -172,7 +230,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Descontos",
     "details": "Clube de benefícios com cupons, descontos em marcas parceiras e cashback.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-ubook",
@@ -181,7 +239,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "App de audiolivros, e‑books, podcasts e revistas em um só catálogo.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-estuda",
@@ -190,7 +248,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "App educacional com apostilas em áudio e materiais para reforço e vestibulares.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-pequenosleitores",
@@ -199,7 +257,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Infantil",
     "details": "Biblioteca infantil com ebooks e audiobooks selecionados por faixa etária.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-fluid",
@@ -208,7 +266,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Saúde e Bem estar",
     "details": "App de bem‑estar com yoga, meditação guiada, respiração e sons relaxantes.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-socialcomics",
@@ -217,7 +275,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "Streaming de HQs e quadrinhos digitais com catálogo atualizado diariamente.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-revistaria",
@@ -226,7 +284,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "Banca digital com acesso a revistas brasileiras em formato digital/PDF.",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-playlist",
@@ -235,7 +293,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Música",
     "details": "A plataforma oferece mais de 100 playlists de diversos gêneros e estilos musicais, todas elaboradas por profissionais do mercado. Os usuários também podem ouvir a rádio streaming, com músicas, notícias e entrevistas 24 horas por dia",
     "price": 20,
-    "comboPrice": 10
+    "comboPrice": 15
   },
   {
     "id": "app-kiddle-2",
@@ -243,8 +301,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Infantil",
     "details": "Plataforma de atividades educacionais e de lazer para crianças, ao vivo e em vídeo.",
-    "price": 25,
-    "comboPrice": 15
+    "price": 30,
+    "comboPrice": 25
   },
   {
     "id": "app-kaspersky-3",
@@ -252,8 +310,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Segurança Digital",
     "details": "Antivírus e proteção essencial com navegação segura e recursos básicos.",
-    "price": 25,
-    "comboPrice": 15
+    "price": 30,
+    "comboPrice": 25
   },
   {
     "id": "app-curtaon",
@@ -261,8 +319,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Séries e Filmes",
     "details": "Streaming do Canal Curta! com documentários e séries sobre artes e humanidades.",
-    "price": 25,
-    "comboPrice": 15
+    "price": 30,
+    "comboPrice": 25
   },
   {
     "id": "app-ojornalista",
@@ -270,8 +328,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Educação e Leitura",
     "details": "App para ler e ouvir jornais, revistas e podcasts de notícias brasileiros.",
-    "price": 25,
-    "comboPrice": 15
+    "price": 30,
+    "comboPrice": 25
   },
   {
     "id": "app-disney-ads",
@@ -279,8 +337,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Top",
     "category": "Séries e Filmes",
     "details": "Streaming da Disney com anúncios; catálogo Disney, Pixar, Marvel, Star Wars e NatGeo.",
-    "price": 25,
-    "comboPrice": 15
+    "price": 35,
+    "comboPrice": 30
   },
   {
     "id": "app-hbo-ads",
@@ -289,7 +347,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Plano com anúncios do Max (HBO), com filmes, séries e esportes selecionados.",
     "price": 35,
-    "comboPrice": 25
+    "comboPrice": 30
   },
   {
     "id": "app-cindie",
@@ -298,7 +356,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Cindie: streaming de cinema e séries independentes, curadoria internacional.",
     "price": 35,
-    "comboPrice": 25
+    "comboPrice": 30
   },
   {
     "id": "app-leitura360",
@@ -307,7 +365,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "Plataforma de leitura multimídia com audiolivros e revistas",
     "price": 35,
-    "comboPrice": 25
+    "comboPrice": 30
   },
   {
     "id": "app-disney-noads",
@@ -316,7 +374,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Streaming da Disney sem anúncios em planos elegíveis; filmes e séries Disney, Pixar, Marvel, Star Wars e NatGeo.",
     "price": 40,
-    "comboPrice": 30
+    "comboPrice": 35
   },
   {
     "id": "app-hbo-noads",
@@ -325,7 +383,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Séries e Filmes",
     "details": "Streaming Max (HBO) com filmes, séries e esportes; opções sem anúncios.",
     "price": 40,
-    "comboPrice": 30
+    "comboPrice": 35
   },
   {
     "id": "app-kaspersky-plus",
@@ -334,7 +392,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Segurança Digital",
     "details": "Segurança avançada com antivírus e extras como VPN e monitoramento adicional.",
     "price": 40,
-    "comboPrice": 30
+    "comboPrice": 35
   },
   {
     "id": "app-nba",
@@ -343,7 +401,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Esportes",
     "details": "Serviço oficial para assistir jogos da NBA ao vivo e on‑demand.",
     "price": 40,
-    "comboPrice": 30
+    "comboPrice": 35
   },
   {
     "id": "app-smartcontent",
@@ -352,7 +410,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Educação e Leitura",
     "details": "App de aprendizado rápido com resumos, vídeos e áudios curados sobre inovação e negócios.",
     "price": 40,
-    "comboPrice": 30
+    "comboPrice": 35
   },
   {
     "id": "app-queimadiaria",
@@ -361,7 +419,7 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Saúde e Bem estar",
     "details": "App de treinos em casa focado em queima de gordura abdominal e condicionamento.",
     "price": 40,
-    "comboPrice": 30
+    "comboPrice": 35
   },
   {
     "id": "app-zen",
@@ -370,6 +428,6 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "category": "Saúde e Bem estar",
     "details": "App de meditação e sono com conteúdos para ansiedade, sono e bem‑estar.",
     "price": 40,
-    "comboPrice": 30
+    "comboPrice": 35
   }
 ];

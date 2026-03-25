@@ -4,8 +4,8 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
 import { ClientData, PlayhubApp } from '../../types';
-import { PLAN_DETAILS, TV_PLANS, PLAYHUB_APPS } from '../../constants';
-import { Printer, FileText, Check, PlayCircle, Search, MapPin } from 'lucide-react';
+import { PLAN_DETAILS, TV_PLANS, PLAYHUB_APPS, EQUIPMENTS } from '../../constants';
+import { Printer, FileText, Check, PlayCircle, Search, MapPin, Monitor } from 'lucide-react';
 
 interface Props {
   onGenerate: (data: ClientData) => void;
@@ -26,6 +26,7 @@ export const IndividualForm: React.FC<Props> = ({ onGenerate }) => {
     planoTV: 'Nenhum',
     adicionais: [],
     apps: [],
+    equipamentos: [],
     valorInstalacao: '',
     formaPagamento: '',
     dataInstalacao: '',
@@ -45,6 +46,15 @@ export const IndividualForm: React.FC<Props> = ({ onGenerate }) => {
         ? prev.apps.filter(id => id !== appId)
         : [...prev.apps, appId];
       return { ...prev, apps };
+    });
+  };
+
+  const toggleEquipamento = (equipId: string) => {
+    setFormData(prev => {
+      const equipamentos = prev.equipamentos.includes(equipId) 
+        ? prev.equipamentos.filter(id => id !== equipId)
+        : [...prev.equipamentos, equipId];
+      return { ...prev, equipamentos };
     });
   };
 
@@ -160,7 +170,8 @@ export const IndividualForm: React.FC<Props> = ({ onGenerate }) => {
                 <div key={category}>
                   <h4 className="text-sm font-bold text-black uppercase border-b border-[#9D4EDD] mb-3 pb-1">{category}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {apps.map(app => {
+                    {/* Fix: Explicitly cast 'apps' to PlayhubApp[] to resolve 'Property map does not exist on type unknown' error */}
+                    {(apps as PlayhubApp[]).map(app => {
                       const isSelected = formData.apps.includes(app.id);
                       const priceToDisplay = isComboEligible ? app.comboPrice : app.price;
                       return (
@@ -185,6 +196,32 @@ export const IndividualForm: React.FC<Props> = ({ onGenerate }) => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        <div className="bg-[#F3E6FF] rounded-lg shadow-md border border-[#9D4EDD]">
+          <CardHeader title="Equipamentos Adicionais (Locação)" icon={Monitor} />
+          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {Object.values(EQUIPMENTS).map(equip => {
+              const isSelected = formData.equipamentos.includes(equip.id);
+              return (
+                <div 
+                  key={equip.id}
+                  onClick={() => toggleEquipamento(equip.id)}
+                  className={`cursor-pointer border rounded-lg p-3 transition-all flex items-start gap-3 ${
+                    isSelected ? 'bg-[#5A189A] border-[#5A189A] text-white shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:border-[#9D4EDD]'
+                  }`}
+                >
+                  <div className={`w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 mt-0.5 ${isSelected ? 'bg-white' : 'bg-white'}`}>
+                    {isSelected && <Check className="w-3.5 h-3.5 text-[#5A189A]" />}
+                  </div>
+                  <div>
+                    <div className="font-bold text-sm leading-tight">{equip.name}</div>
+                    <div className="text-xs mt-1 font-medium">R$ {equip.price.toFixed(2).replace('.',',')} / mês</div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 

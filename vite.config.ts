@@ -9,7 +9,23 @@ export default defineConfig(({ mode }) => {
         port: 3000,
         host: '0.0.0.0',
       },
-      plugins: [react()],
+      plugins: [
+        react(),
+        {
+          name: 'error-logger',
+          configureServer(server) {
+            server.middlewares.use('/log-error', (req, res) => {
+              let body = '';
+              req.on('data', chunk => { body += chunk.toString(); });
+              req.on('end', () => {
+                console.log('CLIENT ERROR:', body);
+                require('fs').appendFileSync('client-errors.log', body + '\n');
+                res.end('ok');
+              });
+            });
+          }
+        }
+      ],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
