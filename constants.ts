@@ -28,7 +28,7 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
       id: "ER-ENTRE 800",
       name: "ER-ENTRE 800",
       total: 114.90,
-      promoPrice: 89.90,
+      promoPrice: 94.90,
       promoText: "Valor promocional (3 meses)",
       services: [
           { un: 1, desc: "PORTA ÓPTICA 800Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 40.00 },
