@@ -10,7 +10,7 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
           { un: 1, desc: "PORTA ÓPTICA 500Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 35.00 },
           { un: 1, desc: "Acesso à Internet 500Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 34.90 },
           { un: 1, desc: "TERMINAL ÓPTICO (ONU)", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
-          { un: 1, desc: "COMODATO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 20.00 }
+          { un: 1, desc: "LOCAÇÃO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 20.00 }
       ]
   },
   "ER-ENTRE 600": {
@@ -21,7 +21,7 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
           { un: 1, desc: "PORTA ÓPTICA 600Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 42.00 },
           { un: 1, desc: "Acesso à Internet 600Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 40.90 },
           { un: 1, desc: "TERMINAL ÓPTICO (ONU)", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
-          { un: 1, desc: "COMODATO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 20.00 }
+          { un: 1, desc: "LOCAÇÃO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 26.00 }
       ]
   },
   "ER-ENTRE 800": {
@@ -33,7 +33,8 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
       services: [
           { un: 1, desc: "PORTA ÓPTICA 800Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 40.00 },
           { un: 1, desc: "Acesso à Internet 800Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 39.90 },
-          { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 35.00 }
+          { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 }
+          { un: 1, desc: "LOCAÇÃO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 30.00 }
       ]
   },
   "ER-ENTRE 920": {
