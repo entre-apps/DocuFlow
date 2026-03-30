@@ -16,7 +16,7 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
   "ER-ENTRE 600": {
       id: "ER-ENTRE 600",
       name: "ER-ENTRE 600",
-      total: 112.90,
+      total: 118.90,
       services: [
           { un: 1, desc: "PORTA ÓPTICA 600Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 42.00 },
           { un: 1, desc: "Acesso à Internet 600Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 40.90 },
@@ -27,7 +27,7 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
   "ER-ENTRE 800": {
       id: "ER-ENTRE 800",
       name: "ER-ENTRE 800",
-      total: 114.90,
+      total: 119.90,
       promoPrice: 94.90,
       promoText: "Valor promocional (3 meses)",
       services: [
