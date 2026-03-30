@@ -33,7 +33,7 @@ export const PLAN_DETAILS: Record<string, InternetPlan> = {
       services: [
           { un: 1, desc: "PORTA ÓPTICA 800Mbps", emp: "BIGDOT TELECOMUNICAÇÕES LTDA", val: 40.00 },
           { un: 1, desc: "Acesso à Internet 800Mbps", emp: "I-CONECTA REDES DE TELECOM.", val: 39.90 },
-          { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 }
+          { un: 1, desc: "TERMINAL ÓPTICO (ONU) WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 10.00 },
           { un: 1, desc: "LOCAÇÃO ROTEADOR WIFI", emp: "I-NEXT LOCAÇÕES E SERVIÇOS", val: 30.00 }
       ]
   },
