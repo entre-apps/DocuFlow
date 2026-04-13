@@ -140,8 +140,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "SKY",
     "details": "Pacote SKY Light incluindo a programação completa da Globo para não perder nada.",
-    "price": 30,
-    "comboPrice": 20
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-sky-light-amazon",
@@ -302,8 +302,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Infantil",
     "details": "Plataforma de atividades educacionais e de lazer para crianças, ao vivo e em vídeo.",
-    "price": 30,
-    "comboPrice": 20
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-kaspersky-3",
@@ -311,8 +311,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Segurança Digital",
     "details": "Antivírus e proteção essencial com navegação segura e recursos básicos.",
-    "price": 30,
-    "comboPrice": 20
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-curtaon",
@@ -320,8 +320,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Séries e Filmes",
     "details": "Streaming do Canal Curta! com documentários e séries sobre artes e humanidades.",
-    "price": 30,
-    "comboPrice": 20
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-ojornalista",
@@ -329,8 +329,8 @@ export const PLAYHUB_APPS: PlayhubApp[] = [
     "tier": "Advanced",
     "category": "Educação e Leitura",
     "details": "App para ler e ouvir jornais, revistas e podcasts de notícias brasileiros.",
-    "price": 30,
-    "comboPrice": 20
+    "price": 25,
+    "comboPrice": 15
   },
   {
     "id": "app-disney-ads",
